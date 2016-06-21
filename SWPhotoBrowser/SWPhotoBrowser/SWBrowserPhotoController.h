@@ -65,7 +65,7 @@
  */
 @property(nonatomic,strong)NSMutableArray *photos;
 /**
- *  站位图片数组 可为空 通常网络图片可用小图站位 如果不用小图站位 数组中可只存一个本地展位图
+ *  占位图片数组 可为空 通常网络图片可用小图站位 如果不用小图站位 数组中可只存一个本地展位图
  */
 @property(nonatomic,strong)NSMutableArray *placeholderPhotos;
 /**
