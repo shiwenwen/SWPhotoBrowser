@@ -6,7 +6,7 @@
 //  Copyright © 2016年 sww. All rights reserved.
 //
 #import "SWIndicatorView.h"
-
+#import "UIView+Frame.h"
 
 static CGFloat const WidthIndicator = 42;
 static CGFloat const SWMargin = 10;

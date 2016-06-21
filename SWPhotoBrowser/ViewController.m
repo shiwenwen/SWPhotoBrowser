@@ -86,6 +86,7 @@
     
     //    [self.navigationController pushViewController:bro animated:NO];
     bro.FillTheSamllPic = YES;
+    bro.maxZoomScale = 2.5;
     [bro show];
     
     

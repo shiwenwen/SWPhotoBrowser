@@ -88,7 +88,7 @@
 -(UIPageControl *)pageControl{
     
     if (!_pageControl) {
-        _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0,SCREEN_HEIGHT - 50, SCREEN_WIDTH, 40)];
+        _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0,SCREEN_HEIGHT - 45, SCREEN_WIDTH, 40)];
         
         _pageControl.numberOfPages = self.photos.count;
         _pageControl.currentPage = self.currentIndex;

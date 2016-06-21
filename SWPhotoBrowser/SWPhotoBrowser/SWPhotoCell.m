@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "SWAlertView.h"
 #import "SWIndicatorView.h"
+#import "UIView+Frame.h"
 @interface SWPhotoCell()<UIScrollViewDelegate,UIAlertViewDelegate>{
     
     
@@ -225,7 +226,7 @@
             }
             
             
-            strongSelf.imageScrollView.minimumZoomScale = strongSelf.imageView.frame.size.width / SCREEN_WIDTH;
+            strongSelf.imageScrollView.minimumZoomScale = strongSelf.imageView.width / SCREEN_WIDTH;
             
         }else{
             //长图
@@ -275,7 +276,7 @@
                 
             }
             
-            strongSelf.imageScrollView.minimumZoomScale = strongSelf.imageView.frame.size.height / SCREEN_HEIGHT;
+            strongSelf.imageScrollView.minimumZoomScale = strongSelf.imageView.height / SCREEN_HEIGHT;
             
         }
         
@@ -364,7 +365,7 @@
             }
             
             
-            strongSelf.imageScrollView.minimumZoomScale = strongSelf.imageView.frame.size.width / SCREEN_WIDTH;
+            strongSelf.imageScrollView.minimumZoomScale = strongSelf.imageView.width / SCREEN_WIDTH;
             
         }else{
             //长图
@@ -414,7 +415,7 @@
                 
             }
             
-         strongSelf.imageScrollView.minimumZoomScale = strongSelf.imageView.frame.size.height / SCREEN_HEIGHT;
+         strongSelf.imageScrollView.minimumZoomScale = strongSelf.imageView.height / SCREEN_HEIGHT;
             
         }
         
@@ -484,7 +485,7 @@
         }
         
         
-        self.imageScrollView.minimumZoomScale = self.imageView.frame.size.width / SCREEN_WIDTH;
+        self.imageScrollView.minimumZoomScale = self.imageView.width / SCREEN_WIDTH;
         
     }else{
         //长图
@@ -534,7 +535,7 @@
             
         }
         
-        self.imageScrollView.minimumZoomScale = self.imageView.frame.size.height / SCREEN_HEIGHT;
+        self.imageScrollView.minimumZoomScale = self.imageView.height / SCREEN_HEIGHT;
         
     }
     
@@ -548,10 +549,10 @@
 
 - (CGPoint)centerOfScrollViewContent:(UIScrollView *)scrollView
 {
-    CGFloat offsetX = (scrollView.frame.size.width > scrollView.contentSize.width)?
-    (scrollView.frame.size.width - scrollView.contentSize.width) * 0.5 : 0.0;
-    CGFloat offsetY = (scrollView.frame.size.height > scrollView.contentSize.height)?
-    (scrollView.frame.size.height - scrollView.contentSize.height) * 0.5 : 0.0;
+    CGFloat offsetX = (scrollView.width > scrollView.contentSize.width)?
+    (scrollView.width - scrollView.contentSize.width) * 0.5 : 0.0;
+    CGFloat offsetY = (scrollView.height > scrollView.contentSize.height)?
+    (scrollView.height - scrollView.contentSize.height) * 0.5 : 0.0;
     CGPoint actualCenter = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX,
                                        scrollView.contentSize.height * 0.5 + offsetY);
     return actualCenter;
