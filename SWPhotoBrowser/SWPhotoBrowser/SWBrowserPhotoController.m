@@ -36,6 +36,19 @@
     
     return self;
 }
+-(instancetype)initWithPhotos:(NSArray *)photos sourceImagesContainerView:(UIScrollView *)containerView{
+    if (self = [super init]) {
+        self.LoadingInAdvance = YES;
+        self.photos = [NSMutableArray arrayWithArray:photos];
+        self.hidesBottomBarWhenPushed = YES;
+        self.sourceImagesContainerView = containerView;
+        self.view.backgroundColor = [UIColor blackColor];
+        self.maxZoomScale = 2;
+        
+    }
+    
+    return self;
+}
 #pragma mark -- 显示
 -(void)show{
     

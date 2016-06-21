@@ -45,7 +45,7 @@
 @interface SWBrowserPhotoController : UIViewController
 
 /**
- *  自定义初始化
+ *  自定义初始化 可用下面的
  *
  *  @param photos 数据数组
  *
@@ -56,6 +56,17 @@
  *  @return SWBrowserPhotoController
  */
 -(instancetype)initWithPhotos:(NSArray *)photos pushAnimation:(BOOL) isAnimation sourceImagesContainerView:(UIScrollView *)containerView;
+
+/**
+ *  自定义初始化
+ *
+ *  @param photos 数据数组
+ *
+ *  @param containerView 承载图片的容器 这里只可传UIScrollView和UICollectionView
+ *
+ *  @return SWBrowserPhotoController
+ */
+-(instancetype)initWithPhotos:(NSArray *)photos sourceImagesContainerView:(UIScrollView *)containerView;
 /**
  *  显示 非push显示 push显示勿用
  */
