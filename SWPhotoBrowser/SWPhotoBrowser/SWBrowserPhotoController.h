@@ -61,6 +61,12 @@
  */
 -(void)show;
 /**
+ *  显示 如果当前在present的控制器上，show使用不显示 使用这个
+ *
+ *  @param controller 当前视图控制器
+ */
+-(void)showInController:(UIViewController *)controller;
+/**
  *  图片源数组，可以是URL字符串数组，图片数组
  */
 @property(nonatomic,strong)NSMutableArray *photos;

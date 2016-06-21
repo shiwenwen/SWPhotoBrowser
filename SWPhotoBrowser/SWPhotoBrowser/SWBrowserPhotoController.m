@@ -31,7 +31,8 @@
         self.sourceImagesContainerView = containerView;
         self.view.backgroundColor = [UIColor blackColor];
         self.maxZoomScale = 2;
-    }
+  
+ }
     
     return self;
 }
@@ -41,6 +42,11 @@
     [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:self
                                                                                      animated:NO
                                                                                    completion:nil];
+    
+}
+-(void)showInController:(UIViewController *)controller{
+    
+    [controller presentViewController:self animated:NO completion:nil];
     
 }
 -(void)viewWillAppear:(BOOL)animated{
