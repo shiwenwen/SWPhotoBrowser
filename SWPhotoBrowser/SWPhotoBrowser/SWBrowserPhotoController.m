@@ -249,9 +249,13 @@
                 
             }
             
+            if ([convertView isKindOfClass:[UIButton class]]) {
+                cell.placeholderImage =((UIButton *)convertView).imageView.image;
+            }else if([convertView isKindOfClass:[UIImageView class]]){
+              cell.placeholderImage =((UIImageView *)convertView).image;
+            }
             
             
-            cell.placeholderImage =((UIImageView *)convertView).image;
 
             
         }

@@ -20,8 +20,6 @@
 
 @implementation ViewController
 
-#pragma mark - lift cycle 生命周期
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,7 +42,7 @@
         [button sd_setImageWithURL:[NSURL URLWithString:imageUrl]
                           forState:UIControlStateNormal
                   placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
-        //        button.backgroundColor = [UIColor redColor];
+        
         [button setTag:idx];
         [button addTarget:self
                    action:@selector(buttonClick:)
@@ -60,23 +58,9 @@
 }
 
 
-#pragma mark - Delegate 视图委托
-
-
-
-
-#pragma mark - event response 事件相应
 
 - (void)buttonClick:(UIButton *)button
 {
-    //启动图片浏览器
-    //    STPhotoBrowserController *browserVc = [[STPhotoBrowserController alloc] init];
-    //    browserVc.sourceImagesContainerView = self.scrollView; // 原图的父控件
-    //    browserVc.countImage = self.arrayImageUrl.count; // 图片总数
-    //    browserVc.currentPage = (int)button.tag;
-    //    browserVc.delegate = self;
-    //    [browserVc show];
-    
     SWBrowserPhotoController *bro = [[SWBrowserPhotoController alloc]initWithPhotos:self.arrayImageUrl pushAnimation:NO sourceImagesContainerView:self.scrollView];
     bro.showIndexTitle = YES;
     bro.showPageControl = YES;
