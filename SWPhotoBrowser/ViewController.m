@@ -81,7 +81,7 @@
     bro.showIndexTitle = YES;
     bro.showPageControl = YES;
     bro.currentIndex = (int)button.tag;
-    bro.showDelete = YES;
+//    bro.showDelete = YES;
     bro.allowSaveImage = YES;
     
     //    [self.navigationController pushViewController:bro animated:NO];

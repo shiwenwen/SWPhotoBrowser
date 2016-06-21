@@ -107,6 +107,10 @@
  */
 @property (nonatomic,assign)BOOL FillTheSamllPic;
 /**
+ *  最大放大倍数 默认为2
+ */
+@property (nonatomic,assign)CGFloat maxZoomScale;
+/**
  *  承载图片的容器 这里只可传UIScrollView和UICollectionView
  */
 @property (nonatomic,strong)UIScrollView *sourceImagesContainerView;

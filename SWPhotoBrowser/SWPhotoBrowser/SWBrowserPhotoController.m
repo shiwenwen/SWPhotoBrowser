@@ -30,6 +30,7 @@
         self.hidesBottomBarWhenPushed = YES;
         self.sourceImagesContainerView = containerView;
         self.view.backgroundColor = [UIColor blackColor];
+        self.maxZoomScale = 2;
     }
     
     return self;
@@ -73,10 +74,7 @@
     [self showPhotoBrowser];
     
 }
--(UIStatusBarStyle)preferredStatusBarStyle{
-    
-    return UIStatusBarStyleLightContent;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -90,7 +88,7 @@
 -(UIPageControl *)pageControl{
     
     if (!_pageControl) {
-        _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0,SCREEN_HEIGHT - 65, SCREEN_WIDTH, 40)];
+        _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0,SCREEN_HEIGHT - 50, SCREEN_WIDTH, 40)];
         
         _pageControl.numberOfPages = self.photos.count;
         _pageControl.currentPage = self.currentIndex;
@@ -202,7 +200,7 @@
     SWPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SWPhotoCell" forIndexPath:indexPath];
     cell.FillTheSamllPic = self.FillTheSamllPic;
     cell.allowSaveImage = YES;
-    
+    cell.maxScale = self.maxZoomScale;
 
    
     if (_isUrl) {
@@ -413,6 +411,7 @@
                                 options:UIViewAnimationOptionCurveLinear
                              animations:^{
                                  tempImageView.frame = frame;
+                                 tempImageView.alpha = 0.9;
                              } completion:^(BOOL finished) {
                                  [tempImageView removeFromSuperview];
                              }];
@@ -462,6 +461,7 @@
                             options:UIViewAnimationOptionCurveLinear
                          animations:^{
                              tempImageView.frame = frame;
+                             tempImageView.alpha = 0.9;
                          } completion:^(BOOL finished) {
                              [tempImageView removeFromSuperview];
                          }];
