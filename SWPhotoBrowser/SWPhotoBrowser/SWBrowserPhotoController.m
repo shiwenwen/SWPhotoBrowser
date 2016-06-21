@@ -203,36 +203,48 @@
     cell.FillTheSamllPic = self.FillTheSamllPic;
     cell.allowSaveImage = YES;
     
-    UIView *convertView;
-    
-    if ([self.sourceImagesContainerView isKindOfClass:[UICollectionView class]]) {
-        
-        UICollectionViewCell *cell = [((UICollectionView *)self.sourceImagesContainerView)cellForItemAtIndexPath:indexPath];
-        
-        convertView = cell.contentView.subviews.firstObject;
-        
-    }else{
-        
-        convertView = self.sourceImagesContainerView.subviews[indexPath.item];
-        
-    }
-    
-    
-    
-    cell.placeholderImage =((UIImageView *)convertView).image;
+
+   
     if (_isUrl) {
         
         cell.imageUrl = self.photos[indexPath.item];
-        if (self.placeholderPhotos.count > 1) {
+        if (self.placeholderPhotos.count > 0) {
             
-            cell.placeholderImageUrl = self.placeholderPhotos[indexPath.item];
-         
+            
+            if([self.placeholderPhotos.firstObject isKindOfClass:[UIImage class]]){
+                cell.placeholderImage = self.placeholderPhotos.firstObject;
+            }else{
+               cell.placeholderImageUrl = self.placeholderPhotos[indexPath.item]; 
+            }
+            
         }else{
-            cell.placeholderImage = self.placeholderPhotos.firstObject;
+            UIView *convertView;
+            
+            if ([self.sourceImagesContainerView isKindOfClass:[UICollectionView class]]) {
+                
+                UICollectionViewCell *cell = [((UICollectionView *)self.sourceImagesContainerView)cellForItemAtIndexPath:indexPath];
+                
+                convertView = cell.contentView.subviews.firstObject;
+                
+            }else{
+                
+                convertView = self.sourceImagesContainerView.subviews[indexPath.item];
+                
+            }
+            
+            
+            
+            cell.placeholderImage =((UIImageView *)convertView).image;
+
+            
         }
+        
+        
     }else{
+        
         cell.image = self.photos[indexPath.item];
     }
+   
     cell.singleBlock = ^(){
       
         [self performSelectorOnMainThread:@selector(closePhotoBrowser:) withObject:indexPath waitUntilDone:YES];
