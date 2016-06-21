@@ -327,14 +327,6 @@
             UIImageView *tempImageView = [[UIImageView alloc] init];
             tempImageView.image = cell.imageView.image;
     
-            
-            
-            
-            
-    
-            
-    
-            
             UIView *convertView;
             
             if ([self.sourceImagesContainerView isKindOfClass:[UICollectionView class]]) {
