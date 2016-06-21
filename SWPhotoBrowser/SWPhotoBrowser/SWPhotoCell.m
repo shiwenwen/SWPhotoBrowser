@@ -286,7 +286,116 @@
 
     
 }
-
+-(void)setPlaceholderImage:(UIImage *)placeholderImage{
+    
+    _placeholderImage = placeholderImage;
+    
+    
+    self.imageView.image = _placeholderImage;
+    if (_placeholderImage.size.width > _placeholderImage.size.height) {
+        //宽图
+        if (_placeholderImage.size.width > SCREEN_WIDTH) {
+            
+            //比屏幕宽
+            
+            CGFloat height = _placeholderImage.size.height * SCREEN_WIDTH / _placeholderImage.size.width;
+            
+            if (height > SCREEN_HEIGHT) {
+                height = SCREEN_HEIGHT;
+                CGFloat width = _placeholderImage.size.width * SCREEN_HEIGHT / _placeholderImage.size.height;
+                self.imageView.frame = CGRectMake((SCREEN_WIDTH - width)/2, 0, width, height);
+            }else{
+                
+                self.imageView.frame = CGRectMake(0, (SCREEN_HEIGHT - height)/2, SCREEN_WIDTH, height);
+            }
+            
+            
+        }else{
+            
+            
+            if (self.FillTheSamllPic) {
+                //填充
+                
+                
+                //填充
+                CGFloat height = _placeholderImage.size.height * SCREEN_WIDTH / _placeholderImage.size.width;
+                if (height > SCREEN_HEIGHT) {
+                    height = SCREEN_HEIGHT;
+                    CGFloat width = _placeholderImage.size.width * SCREEN_HEIGHT / _placeholderImage.size.height;
+                    self.imageView.frame = CGRectMake((SCREEN_WIDTH - width)/2, 0, width, height);
+                }else{
+                    
+                    self.imageView.frame = CGRectMake(0, (SCREEN_HEIGHT - height)/2, SCREEN_WIDTH, height);
+                }
+                
+            }else{
+                //不填充
+                CGFloat width = _placeholderImage.size.width;
+                CGFloat height = _placeholderImage.size.height;
+                self.imageView.frame = CGRectMake((SCREEN_WIDTH - width)/2, (SCREEN_HEIGHT - height)/2, width, height);
+            }
+            
+            
+            
+        }
+        
+        
+        self.imageScrollView.minimumZoomScale = self.imageView.width / SCREEN_WIDTH;
+        
+    }else{
+        //长图
+        
+        if (_placeholderImage.size.height > SCREEN_HEIGHT) {
+            
+            //比屏幕高
+            
+            CGFloat width = _placeholderImage.size.width * SCREEN_HEIGHT / _placeholderImage.size.height;
+            if (width > SCREEN_WIDTH) {
+                width = SCREEN_WIDTH;
+                CGFloat height = _placeholderImage.size.height * SCREEN_WIDTH / _placeholderImage.size.width;
+                self.imageView.frame = CGRectMake(0,(SCREEN_HEIGHT - height)/2, width, height);
+            }else{
+                self.imageView.frame = CGRectMake((SCREEN_WIDTH - width)/2, 0, width, SCREEN_HEIGHT);
+            }
+            
+            
+            
+            
+        }else{
+            
+            if (self.FillTheSamllPic) {
+                //填充
+                CGFloat width = _placeholderImage.size.width * SCREEN_HEIGHT / _placeholderImage.size.height;
+                if (width > SCREEN_WIDTH) {
+                    width = SCREEN_WIDTH;
+                    CGFloat height = _placeholderImage.size.height * SCREEN_WIDTH / _placeholderImage.size.width;
+                    self.imageView.frame = CGRectMake(0,(SCREEN_HEIGHT - height)/2, width, height);
+                }else{
+                    
+                    self.imageView.frame = CGRectMake((SCREEN_WIDTH - width)/2, 0, width, SCREEN_HEIGHT);
+                }
+                
+                
+                
+            }else{
+                //不填充
+                CGFloat width = _placeholderImage.size.width;
+                CGFloat height = _placeholderImage.size.height;
+                self.imageView.frame = CGRectMake((SCREEN_WIDTH - width)/2, (SCREEN_HEIGHT - height)/2, width, height);
+                
+                
+            }
+            
+            
+            
+        }
+        
+        self.imageScrollView.minimumZoomScale = self.imageView.height / SCREEN_HEIGHT;
+        
+    }
+    
+    
+}
 -(void)setImageUrl:(NSString *)imageUrl{
     
     _imageUrl = imageUrl;

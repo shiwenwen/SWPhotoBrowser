@@ -205,7 +205,7 @@
    
     if (_isUrl) {
         
-        cell.imageUrl = self.photos[indexPath.item];
+        
         if (self.placeholderPhotos.count > 0) {
             
             
@@ -237,7 +237,7 @@
             
         }
         
-        
+     cell.imageUrl = self.photos[indexPath.item];
     }else{
         
         cell.image = self.photos[indexPath.item];
