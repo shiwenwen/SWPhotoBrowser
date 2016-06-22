@@ -161,14 +161,14 @@
     
     if (self.currentIndex == self.photos.count) {
         
-        self.currentIndex -= 1;
+        self.currentIndex = self.photos.count - 1;
     }
-    self.indexTitleView.text = [NSString stringWithFormat:@"%ld/%lu",(long)self.currentIndex,(unsigned long)self.photos.count];
+    self.indexTitleView.text = [NSString stringWithFormat:@"%ld/%lu",(long)self.currentIndex+1,(unsigned long)self.photos.count];
     self.pageControl.numberOfPages = self.photos.count;
     self.pageControl.currentPage = self.currentIndex;
     if (self.photos.count < 1) {
         if (self.navigationController) {
-            [self.navigationController popViewControllerAnimated:NO];
+            [self.navigationController popViewControllerAnimated:self.isAnimation];
         }else{
             [self dismissViewControllerAnimated:NO completion:NULL];
         }
