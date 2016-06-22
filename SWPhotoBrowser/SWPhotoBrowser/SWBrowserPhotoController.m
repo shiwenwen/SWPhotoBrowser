@@ -141,6 +141,9 @@
     }
     return _deleteButton;
 }
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 -(void)deletePic{
     [self.photos removeObjectAtIndex:self.currentIndex];
     if (_isUrl) {
