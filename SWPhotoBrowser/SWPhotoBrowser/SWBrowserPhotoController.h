@@ -43,20 +43,6 @@
 
 @end
 @interface SWBrowserPhotoController : UIViewController
-
-/**
- *  自定义初始化 可用下面的
- *
- *  @param photos 数据数组
- *
- *  @param isAnimation 如果push时需要动画 请将这里设置为YES 没有动画则设置为NO
- *
- *  @param containerView 承载图片的容器 这里只可传UIScrollView和UICollectionView
- *
- *  @return SWBrowserPhotoController
- */
--(instancetype)initWithPhotos:(NSArray *)photos pushAnimation:(BOOL) isAnimation sourceImagesContainerView:(UIScrollView *)containerView;
-
 /**
  *  自定义初始化
  *
@@ -68,7 +54,7 @@
  */
 -(instancetype)initWithPhotos:(NSArray *)photos sourceImagesContainerView:(UIScrollView *)containerView;
 /**
- *  显示 非push显示 push显示勿用
+ *  显示 如果显示不了 使用showInController:(UIViewController *)controller;
  */
 -(void)show;
 /**
@@ -93,11 +79,6 @@
  *  是否显示删除按钮，通常是用于查看发送的图片的
  */
 @property(nonatomic,assign)BOOL showDelete;
-/**
- *  如果push时需要动画 请将这里设置为YES 没有动画则设置为NO
- */
-
-@property(nonatomic,assign)BOOL isAnimation;
 
 /**
  *  代理对象

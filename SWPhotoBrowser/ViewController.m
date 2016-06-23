@@ -61,16 +61,16 @@
 
 - (void)buttonClick:(UIButton *)button
 {
-    SWBrowserPhotoController *bro = [[SWBrowserPhotoController alloc]initWithPhotos:self.arrayImageUrl pushAnimation:NO sourceImagesContainerView:self.scrollView];
+    SWBrowserPhotoController *bro = [[SWBrowserPhotoController alloc]initWithPhotos:self.arrayImageUrl sourceImagesContainerView:self.scrollView];
     bro.showIndexTitle = YES;
     bro.showPageControl = YES;
     bro.currentIndex = (int)button.tag;
 //    bro.showDelete = YES;
     bro.allowSaveImage = YES;
     
-    //    [self.navigationController pushViewController:bro animated:NO];
+    
     bro.FillTheSamllPic = YES;
-    bro.maxZoomScale = 2.5;
+    bro.maxZoomScale = 2;
     [bro show];
     
     

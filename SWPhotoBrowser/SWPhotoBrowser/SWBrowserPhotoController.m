@@ -21,21 +21,6 @@
 
 @implementation SWBrowserPhotoController
 #pragma mark -- 初始化
--(instancetype)initWithPhotos:(NSArray *)photos pushAnimation:(BOOL) isAnimation sourceImagesContainerView:(UIScrollView *)containerView{
-    
-    if (self = [super init]) {
-        self.LoadingInAdvance = YES;
-        self.photos = [NSMutableArray arrayWithArray:photos];
-        self.isAnimation = isAnimation;
-        self.hidesBottomBarWhenPushed = YES;
-        self.sourceImagesContainerView = containerView;
-        self.view.backgroundColor = [UIColor blackColor];
-        self.maxZoomScale = 2;
-  
- }
-    
-    return self;
-}
 -(instancetype)initWithPhotos:(NSArray *)photos sourceImagesContainerView:(UIScrollView *)containerView{
     if (self = [super init]) {
         self.LoadingInAdvance = YES;
@@ -64,8 +49,6 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:self.isAnimation];
     
     [self.imageCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     
@@ -96,6 +79,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     
     [self configImageCollectionView];
     
@@ -170,11 +155,8 @@
     self.pageControl.numberOfPages = self.photos.count;
     self.pageControl.currentPage = self.currentIndex;
     if (self.photos.count < 1) {
-        if (self.navigationController) {
-            [self.navigationController popViewControllerAnimated:self.isAnimation];
-        }else{
+        
             [self dismissViewControllerAnimated:NO completion:NULL];
-        }
         
         
     }
@@ -191,9 +173,8 @@
     laytout.itemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
     laytout.minimumLineSpacing = 0;
     laytout.minimumInteritemSpacing = 0;
-    if (self.navigationController) {
-      laytout.sectionInset = UIEdgeInsetsMake(-20, 0, 0, 0);  
-    }
+      laytout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+
     
     laytout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
@@ -205,7 +186,6 @@
     self.imageCollectionView.delegate = self;
     self.imageCollectionView.dataSource = self;
     self.imageCollectionView.pagingEnabled = YES;
-//    self.imageCollectionView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.imageCollectionView];
     
     self.imageCollectionView.hidden = YES;
@@ -382,32 +362,17 @@
 #pragma mark--关闭图片浏览
 -(void)closePhotoBrowser:(NSIndexPath *)indexpath{
     
-    if (self.isAnimation) {
-        if (self.navigationController) {
-          [self.navigationController popViewControllerAnimated:self.isAnimation];
-        }else{
-            
+
             SWPhotoCell *cell = (SWPhotoCell *)[self.imageCollectionView cellForItemAtIndexPath:indexpath];
             
             UIImageView *tempImageView = [[UIImageView alloc] init];
             tempImageView.image = cell.imageView.image;
             tempImageView.frame = cell.imageView.frame;
-            
-            
-            
-            
+     
             [[UIApplication sharedApplication].keyWindow addSubview:tempImageView];
-            
-            if (self.navigationController) {
-                
-                [self.navigationController popViewControllerAnimated:self.isAnimation];
-                
-            }else{
-                
+
                 [self dismissViewControllerAnimated:NO completion:NULL];
-            }
-            
-            
+
             UIView *convertView;
             
             if ([self.sourceImagesContainerView isKindOfClass:[UICollectionView class]]) {
@@ -433,59 +398,6 @@
                              } completion:^(BOOL finished) {
                                  [tempImageView removeFromSuperview];
                              }];
-
-        }
-        
-    }else{
-        
-        
-        SWPhotoCell *cell = (SWPhotoCell *)[self.imageCollectionView cellForItemAtIndexPath:indexpath];
-        
-        UIImageView *tempImageView = [[UIImageView alloc] init];
-        tempImageView.image = cell.imageView.image;
-        tempImageView.frame = cell.imageView.frame;
-        
-        
-        
-        [[UIApplication sharedApplication].keyWindow addSubview:tempImageView];
-        if (self.navigationController) {
-            
-           [self.navigationController popViewControllerAnimated:self.isAnimation];
-            
-        }else{
-            
-            [self dismissViewControllerAnimated:NO completion:NULL];
-        }
-        
-        
-        UIView *convertView;
-        
-        if ([self.sourceImagesContainerView isKindOfClass:[UICollectionView class]]) {
-            
-            UICollectionViewCell *cell = [((UICollectionView *)self.sourceImagesContainerView)cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
-            
-            convertView = cell.contentView.subviews.firstObject;
-            
-        }else{
-            
-            convertView = self.sourceImagesContainerView.subviews[self.currentIndex];
-            
-        }
-        
-        CGRect frame = [convertView.superview convertRect:convertView.frame toView:[UIApplication sharedApplication].keyWindow];
-        
-        [UIView animateWithDuration:0.3
-                              delay:0
-                            options:UIViewAnimationOptionCurveLinear
-                         animations:^{
-                             tempImageView.frame = frame;
-                             tempImageView.alpha = 0.9;
-                         } completion:^(BOOL finished) {
-                             [tempImageView removeFromSuperview];
-                         }];
-        
-    }
-    
 
     
     
