@@ -118,7 +118,7 @@
     
     if (!_deleteButton) {
         _deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _deleteButton.frame = CGRectMake(SCREEN_WIDTH - 65, 32.5, 50, 20);
+        _deleteButton.frame = CGRectMake(SCREEN_WIDTH - 75, 22.5, 70, 40);
         [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
         [_deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_deleteButton addTarget:self action:@selector(deletePic) forControlEvents:UIControlEventTouchUpInside];
