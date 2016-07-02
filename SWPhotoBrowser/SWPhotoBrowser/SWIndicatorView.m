@@ -43,18 +43,29 @@ static  CGFloat const SWMarginSmall = 5;
     self.layer.cornerRadius = WidthIndicator / 2;
     [super setFrame:frame];
 }
-
+-(void)setViewMode:(SWIndicatorViewMode)viewMode{
+    _viewMode = viewMode;
+    if (viewMode == SWIndicatorViewModePieDiagram) {
+        
+        self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.046];
+        
+        self.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.layer.borderWidth = 1;
+    }
+    
+}
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef content = UIGraphicsGetCurrentContext();
-
+    
     CGFloat centerX = rect.size.width / 2;
     CGFloat centerY = rect.size.height / 2;
-    [[UIColor whiteColor] set];
+    
     
     switch (self.viewMode) {
         case SWIndicatorViewModeLoopDiagram:
         {
+            [[UIColor whiteColor] set];
             CGContextSetLineWidth(content, 2);
             CGContextSetLineCap(content, kCGLineCapRound);
             CGFloat to = - M_PI * 0.5 + self.progress * M_PI * 2 + 0.05; // 初始值0.05
@@ -64,8 +75,8 @@ static  CGFloat const SWMarginSmall = 5;
             break;
         default:
         {
+            [[UIColor clearColor] set];
             CGFloat radius = MIN(rect.size.width * 0.5, rect.size.height * 0.5) - SWMarginSmall;
-            
             CGFloat contentW = radius * 2 + SWMargin;
             CGFloat contentH = contentW;
             CGFloat contentX = (rect.size.width - contentW) * 0.5;
@@ -73,11 +84,11 @@ static  CGFloat const SWMarginSmall = 5;
             CGContextAddEllipseInRect(content, CGRectMake(contentX, contentY, contentW, contentH));
             CGContextFillPath(content);
             
-            [[UIColor lightGrayColor] set];
+            [[UIColor whiteColor] set];
             CGContextMoveToPoint(content, centerX, centerY);
             CGContextAddLineToPoint(content, centerX, 0);
             CGFloat to = - M_PI * 0.5 + self.progress * M_PI * 2 + 0.001; // 初始值
-            CGContextAddArc(content, centerX, centerY, radius, - M_PI * 0.5, to, 1);
+            CGContextAddArc(content, centerX, centerY, radius, - M_PI * 0.5, to, 0);
             CGContextClosePath(content);
             
             CGContextFillPath(content);
