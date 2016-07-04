@@ -1,11 +1,10 @@
 //
-//  STAlertView.m
-//  STPhotoBrowser
+//  SWAlertView.m
+//  SWPhotoBrowser
 //
 //  Created by mac on 2016/6/18.
 //  Copyright © 2016年 sww. All rights reserved.
 //
-
 #import "SWAlertView.h"
 #import "UIView+Frame.h"
 
@@ -71,10 +70,10 @@ static CGFloat const HAlert = 112;
     
     if (style == SWAlertViewStyleError) {
         [self.labelTitle setText:@"图片保存出错"];
-        [self.imageView setImage:[UIImage imageNamed:@"alert_error_icon"]];
+        [self.imageView setImage:[UIImage imageNamed:@"error_icon"]];
     }else{
         [self.labelTitle setText:@"图片已保存"];
-        [self.imageView setImage:[UIImage imageNamed:@"alert_success_icon"]];
+        [self.imageView setImage:[UIImage imageNamed:@"success_icon"]];
     }
 }
 
