@@ -72,7 +72,7 @@
 {
     if (!_indicatorView) {
         _indicatorView = [[SWIndicatorView alloc]init];
-        [_indicatorView setViewMode:SWIndicatorViewModePieDiagram];
+        
         _indicatorView.center = self.imageScrollView.center;
     }
     return _indicatorView;
