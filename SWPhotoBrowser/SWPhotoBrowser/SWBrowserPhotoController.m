@@ -344,17 +344,26 @@
             CGRect frame = [convertView.superview convertRect:convertView.frame toView:[UIApplication sharedApplication].keyWindow];
             tempImageView.frame = frame;
         [[UIApplication sharedApplication].keyWindow addSubview:tempImageView];
-            [UIView animateWithDuration:0.3
-                                  delay:0
-                                options:UIViewAnimationOptionCurveLinear
-                             animations:^{
-                                 tempImageView.frame = cell.imageView.frame;
-                             } completion:^(BOOL finished) {
-                                 self.imageCollectionView.hidden = NO;
-                                 [tempImageView removeFromSuperview];
-                             }];
+//            [UIView animateWithDuration:0.3
+//                                  delay:0
+//                                options:UIViewAnimationOptionCurveLinear
+//                             animations:^{
+//                                 tempImageView.frame = cell.imageView.frame;
+//                             } completion:^(BOOL finished) {
+//                                 self.imageCollectionView.hidden = NO;
+//                                 [tempImageView removeFromSuperview];
+//                             }];
     
-        
+    
+    
+        [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+             tempImageView.frame = cell.imageView.frame;
+            
+        } completion:^(BOOL finished) {
+            self.imageCollectionView.hidden = NO;
+            [tempImageView removeFromSuperview];
+        }];
     
     
 }
@@ -398,7 +407,16 @@
                              } completion:^(BOOL finished) {
                                  [tempImageView removeFromSuperview];
                              }];
-
+    
+//        [UIView animateWithDuration:.8 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            tempImageView.frame = frame;
+//            tempImageView.alpha = 0.9;
+//        
+//        } completion:^(BOOL finished) {
+//            [tempImageView removeFromSuperview];
+//            
+//        }];
+    
     
     
 }
