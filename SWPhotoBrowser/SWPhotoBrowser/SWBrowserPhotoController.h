@@ -48,11 +48,11 @@
  *
  *  @param photos 数据数组
  *
- *  @param containerView 承载图片的容器 这里只可传UIScrollView和UICollectionView
+ *  @param containerView 承载图片的容器 UICollectionView ScrollView ImageView Button
  *
  *  @return SWBrowserPhotoController
  */
--(instancetype)initWithPhotos:(NSArray *)photos sourceImagesContainerView:(UIScrollView *)containerView;
+-(instancetype)initWithPhotos:(NSArray *)photos sourceImagesContainerView:(UIView *)containerView;
 /**
  *  显示 如果显示不了 使用showInController:(UIViewController *)controller;
  */
@@ -111,6 +111,6 @@
 /**
  *  承载图片的容器 这里只可传UIScrollView和UICollectionView
  */
-@property (nonatomic,strong)UIScrollView *sourceImagesContainerView;
+@property (nonatomic,strong)UIView *sourceImagesContainerView;
 
 @end

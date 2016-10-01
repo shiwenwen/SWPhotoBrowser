@@ -21,7 +21,7 @@
 
 @implementation SWBrowserPhotoController
 #pragma mark -- 初始化
--(instancetype)initWithPhotos:(NSArray *)photos sourceImagesContainerView:(UIScrollView *)containerView{
+-(instancetype)initWithPhotos:(NSArray *)photos sourceImagesContainerView:(UIView *)containerView{
     if (self = [super init]) {
         self.LoadingInAdvance = YES;
         self.photos = [NSMutableArray arrayWithArray:photos];
@@ -226,6 +226,13 @@
                 
                 convertView = cell.contentView.subviews.firstObject;
                 
+            }else if ([self.sourceImagesContainerView isKindOfClass:[UIImageView class]]){
+                convertView = self.sourceImagesContainerView;
+                
+            }else if([self.sourceImagesContainerView isKindOfClass:[UIButton class]]){
+                
+                convertView = self.sourceImagesContainerView;
+                
             }else{
                 
                 convertView = self.sourceImagesContainerView.subviews[indexPath.item];
@@ -335,10 +342,15 @@
                 
                 convertView = cell.contentView.subviews.firstObject;
                 
+            }else if ([self.sourceImagesContainerView isKindOfClass:[UIImageView class]]){
+                convertView = self.sourceImagesContainerView;
+
+            }else if([self.sourceImagesContainerView isKindOfClass:[UIButton class]]){
+                
+                convertView = self.sourceImagesContainerView;
+                
             }else{
-                
                 convertView = self.sourceImagesContainerView.subviews[self.currentIndex];
-                
             }
             
             CGRect frame = [convertView.superview convertRect:convertView.frame toView:[UIApplication sharedApplication].keyWindow];
@@ -388,22 +400,43 @@
                 
                 UICollectionViewCell *cell = [((UICollectionView *)self.sourceImagesContainerView)cellForItemAtIndexPath:indexpath];
                 
-                convertView = cell.contentView.subviews.firstObject;
+                for (UIView *view in cell.contentView.subviews) {
+                    if ([view isKindOfClass:[UIImageView class]] || [view isKindOfClass:[UIImageView class]]) {
+                        convertView = cell.contentView.subviews.firstObject;
+                    }
+                }
                 
+            }else if ([self.sourceImagesContainerView isKindOfClass:[UIImageView class]]){
+                convertView = self.sourceImagesContainerView;
+                
+            }else if([self.sourceImagesContainerView isKindOfClass:[UIButton class]]){
+                
+                convertView = self.sourceImagesContainerView;
             }else{
                 
                 convertView = self.sourceImagesContainerView.subviews[self.currentIndex];
                 
             }
-            
+    
+            tempImageView.clipsToBounds = YES;
             CGRect frame = [convertView.superview convertRect:convertView.frame toView:[UIApplication sharedApplication].keyWindow];
+    
+            if ([convertView isKindOfClass:[UIImageView class]]) {
+                tempImageView.contentMode = convertView.contentMode;
+                
+            }else if ([convertView isKindOfClass:[UIButton class]]){
+                UIImageView *tempView = ((UIButton *)convertView).imageView;
+                tempImageView.contentMode = tempView.contentMode;
+                
+                frame = [tempView.superview convertRect:tempView.frame toView:[UIApplication sharedApplication].keyWindow];
+            }
             
             [UIView animateWithDuration:0.3
                                   delay:0
                                 options:UIViewAnimationOptionCurveLinear
                              animations:^{
                                  tempImageView.frame = frame;
-                                 tempImageView.alpha = 0.9;
+                                 
                              } completion:^(BOOL finished) {
                                  [tempImageView removeFromSuperview];
                              }];
