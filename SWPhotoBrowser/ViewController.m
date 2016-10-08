@@ -61,7 +61,7 @@
 
 - (void)buttonClick:(UIButton *)button
 {
-    SWBrowserPhotoController *bro = [[SWBrowserPhotoController alloc]initWithPhotos:self.arrayImageUrl sourceImagesContainerView:button.imageView];
+    SWBrowserPhotoController *bro = [[SWBrowserPhotoController alloc]initWithPhotos:self.arrayImageUrl sourceImagesContainerView:self.scrollView];
     bro.showIndexTitle = YES;
     bro.showPageControl = YES;
     bro.currentIndex = (int)button.tag;
