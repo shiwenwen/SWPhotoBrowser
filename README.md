@@ -1,5 +1,5 @@
 # SWPhotoBrowser
-仿微博，朋友圈的图片浏览，功能丰富
+## 仿微博，朋友圈的图片浏览，功能丰富
 ==========================
 适用于UIcollectionView,UIScrollView,UIImage,UIButton以及普通视图中的图片浏览，支持网络以及本地图片的加载，暂不支持视频。
 点击的图片需要为UIButton或者UIImageView
@@ -15,4 +15,6 @@
     bro.FillTheSamllPic = YES;//图片尺寸小于屏幕尺寸时，YES进行屏幕大小填充 NO则是原始尺寸显示
     bro.maxZoomScale = 2;//最大放大倍数 不设置则默认最大为2倍
     [bro show];//显示
-    
+    
+## 演示
+ ![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
