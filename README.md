@@ -17,4 +17,4 @@
         [bro show];//显示
     
 ## 演示
- ![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
+ ![image](https://github.com/shiwenwen/SWPhotoBrowser/blob/master/SWPhotoBrowser.gif)
