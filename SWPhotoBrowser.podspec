@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
   s.license      =  { :type => "MIT", :file => "LICENSE" }
   s.author             = { "石文文" => "shiwenwenDevelop@163.com" }
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/shiwenwen/SWPhotoBrowser.git", :tag => "1.0.0" }
-  s.source_files  = "SWPhotoBrowser", "SWPhotoBrowser/SWPhotoBrowser/*.{h,m}"
+  s.source       = { :git => "https://github.com/shiwenwen/SWPhotoBrowser.git", :tag => "1.0.1" }
+  s.source_files  = "SWPhotoBrowser/SWPhotoBrowser/*.{h,m}"
   s.framework  = "UIKit"
   s.dependency "SDWebImage"
 
