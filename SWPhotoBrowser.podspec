@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SWPhotoBrowser"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "仿微博，朋友圈的图片浏览，功能丰富"
 
   s.description  = <<-DESC
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.license      =  { :type => "MIT", :file => "LICENSE" }
   s.author             = { "石文文" => "shiwenwenDevelop@163.com" }
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/shiwenwen/SWPhotoBrowser.git", :tag => "1.0.1" }
+  s.source       = { :git => "https://github.com/shiwenwen/SWPhotoBrowser.git", :tag => "1.0.2" }
   s.source_files  = "SWPhotoBrowser/SWPhotoBrowser/*.{h,m}"
   s.framework  = "UIKit"
   s.dependency "SDWebImage"
